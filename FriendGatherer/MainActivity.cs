@@ -9,6 +9,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Telephony;
+using Couchbase.Lite;
 using FriendWrangler.Core.Models;
 using FriendWrangler.Core.Services;
 using FriendWrangler.Core.Services.Invitations;
@@ -24,6 +25,12 @@ namespace FriendWrangler.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            var manager = Manager.SharedInstance;
+            var dbName = "temp";
+            var database = manager.GetDatabase(dbName);
+            
+
+            Console.WriteLine("Database created");
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -38,7 +45,7 @@ namespace FriendWrangler.Droid
                 var test = new StandardInvitationService();
                 var testinvite = new Invitation() { EventName = "Farm Party" };
                 var friendlist = new List<Friend>();
-                friendlist.Add(new AndroidFriend() { PhoneNumber = "5403080218" });
+                friendlist.Add(new AndroidFriend() { PhoneNumber = "5712949591" });
                 Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 9999999, 1, "Hello Johnny", 1));
             };
         }

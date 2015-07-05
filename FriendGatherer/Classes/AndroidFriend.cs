@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.Telephony;
+using Couchbase.Lite;
 using FriendWrangler.Core.Models;
 
 namespace FriendWrangler.Droid.Classes
@@ -20,12 +22,24 @@ namespace FriendWrangler.Droid.Classes
         {
             TextMessage = null;
             var receiver = new SmsBroadcastReceiver();
-            
+            var manager = Manager.SharedInstance;
+            var database = manager.GetDatabase("temp");
             while (TextMessage == null)
             {
+
+              var x = database.GetExistingDocument(PhoneNumber);
+                if (x != null)
+                {
+              TextMessage =  x.Properties.Values.First().ToString();
+                    x.Purge();
+                    
+                }
                 
-                Task.Delay(1000);
+
+
+
             }
+            Console.WriteLine(TextMessage);
             return TextMessage;
         }
         public void SetProp(string message , string number)

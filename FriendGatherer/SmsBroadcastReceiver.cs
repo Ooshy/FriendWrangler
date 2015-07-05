@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.App;
@@ -8,6 +9,7 @@ using Android.Telephony.Gsm;
 using Android.Text;
 using FriendWrangler.Core;
 using FriendWrangler.Droid.Classes;
+using Couchbase.Lite;
 using Environment = Android.Provider.Settings.System;
 
 namespace FriendWrangler.Droid
@@ -49,6 +51,34 @@ namespace FriendWrangler.Droid
                 messageFrom = message.DisplayOriginatingAddress;
                 messageBody = message.MessageBody;
             }
+            var manager = Manager.SharedInstance;
+            var database = manager.GetDatabase("temp");
+            var properties = new Dictionary<string, object>()
+                {
+                 {"message", messageBody},
+                };
+
+
+            
+            var document = database.GetExistingDocument(messageFrom);
+            if (document == null)
+            {
+             document = database.GetDocument(messageFrom);
+            var revision = document.PutProperties(properties);
+                
+            }
+            
+            
+
+
+
+            Console.WriteLine("Retrieved document: ");
+            //foreach (var kvp in retrievedDocument.Properties)
+            //{
+            //    Console.WriteLine("{0} : {1}", kvp.Key, kvp.Value);
+            //}
+
+
             
         }
 

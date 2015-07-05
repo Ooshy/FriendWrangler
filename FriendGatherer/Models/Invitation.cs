@@ -94,6 +94,7 @@ namespace FriendWrangler.Core.Models
             _timer.Stop();
             
             var sentiment = InvitationAnalyzer.AnalyzeMessage(message);
+            Console.WriteLine(sentiment);
             switch (sentiment)
             {
                 case MessageSentiment.Yes:

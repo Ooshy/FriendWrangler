@@ -89,7 +89,7 @@
     <Compile Include="Services\ISettings.cs" />
     <Compile Include="Services\IWebService.cs" />
     <Compile Include="Services\ServiceContainer.cs" />
-    <Compile Include="Classes\SmsBroadcastReceiver.cs" />
+    <Compile Include="SmsBroadcastReceiver.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SendInvitationsViewModel.cs" />

@@ -1,16 +1,10 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Net;
 using Android.Runtime;
 using Android.Telephony.Gsm;
-using Android.Text;
-using FriendWrangler.Core;
-using FriendWrangler.Droid.Classes;
-using Environment = Android.Provider.Settings.System;
 
-namespace FriendWrangler.Droid
+namespace FriendWrangler.Classes
 {
     [BroadcastReceiver(Enabled = true, Exported = true)]
     [IntentFilter(new string[] { ConnectivityManager.ConnectivityAction })]

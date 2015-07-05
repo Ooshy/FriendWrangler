@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FriendWrangler.Core.Classes;
-using FriendWrangler.Core.Constants;
 using FriendWrangler.Core.Enumerations;
 
 namespace FriendWrangler.Core.Models

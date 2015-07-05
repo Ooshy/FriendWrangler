@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Telephony;
+using FriendWrangler.Classes;
 using FriendWrangler.Core.Models;
 
 namespace FriendWrangler.Droid.Classes

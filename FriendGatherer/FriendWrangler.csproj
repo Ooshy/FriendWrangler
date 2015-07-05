@@ -68,7 +68,7 @@
     <Compile Include="Classes\InvitationAnalyzer.cs" />
     <Compile Include="Classes\InvitationValidator.cs" />
     <Compile Include="Classes\Timer.cs" />
-    <Compile Include="Constants\FriendConstants.cs" />
+    <Compile Include="Globals\Contants.cs" />
     <Compile Include="Enumerations\Enumerations.cs" />
     <Compile Include="Enumerations\InvitationStatus.cs" />
     <Compile Include="Enumerations\MessageSentiment.cs" />
@@ -89,7 +89,7 @@
     <Compile Include="Services\ISettings.cs" />
     <Compile Include="Services\IWebService.cs" />
     <Compile Include="Services\ServiceContainer.cs" />
-    <Compile Include="SmsBroadcastReceiver.cs" />
+    <Compile Include="Classes\SmsBroadcastReceiver.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\SendInvitationsViewModel.cs" />

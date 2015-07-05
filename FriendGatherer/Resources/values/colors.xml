@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <item name="mainBackground" type="color">#607D8B</item>
+  <item name="hintColor" type="color">#CFD8DC</item>
+  <item name="textColor" type="color">#ECEFF1</item>
+  <item name="darkButtonColor" type="color">#263238</item>
+  <item name="lightButtonColor" type="color">#90A4AE</item>
+</resources>

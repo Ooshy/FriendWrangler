@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="FriendGatherer.FriendGatherer" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk />
-	<application android:label="FriendGatherer" android:icon="@drawable/Icon">
-    <receiver android:name="friendwrangler.droid.SmsBroadcastReceiver"  android:enabled="true" android:exported="true">
-      <intent-filter>
-        <action android:name=
-                    "android.provider.Telephony.SMS_RECEIVED" />
-      </intent-filter>
-    </receiver>
-    
-  </application>
+	<application android:label="Friend Gatherer" android:icon="@drawable/Icon">
+		<receiver android:name="friendwrangler.droid.SmsBroadcastReceiver" android:enabled="true" android:exported="true">
+			<intent-filter>
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+			</intent-filter>
+		</receiver>
+	</application>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.READ_SMS" />
 	<uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -18,4 +16,5 @@
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.WRITE_SMS" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
 </manifest>

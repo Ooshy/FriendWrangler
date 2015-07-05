@@ -65,10 +65,13 @@
   <ItemGroup>
     <Compile Include="Auth\Key.cs" />
     <Compile Include="Classes\AndroidFriend.cs" />
+    <Compile Include="Classes\Application.cs" />
+    <Compile Include="Classes\CreateEventActivity.cs" />
     <Compile Include="Classes\InvitationAnalyzer.cs" />
     <Compile Include="Classes\InvitationValidator.cs" />
+    <Compile Include="Classes\SelectFriendsActivity.cs" />
     <Compile Include="Classes\Timer.cs" />
-    <Compile Include="Constants\FriendConstants.cs" />
+    <Compile Include="Globals\Contants.cs" />
     <Compile Include="Enumerations\Enumerations.cs" />
     <Compile Include="Enumerations\InvitationStatus.cs" />
     <Compile Include="Enumerations\MessageSentiment.cs" />
@@ -101,6 +104,7 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\CreateEvent.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -117,6 +121,22 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-v21\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\colors.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-v21\colors.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.0\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.0\build\MonoAndroid\SQLitePCL.raw.targets')" />

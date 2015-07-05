@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/darkButtonColor">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_margin="20dp"
+        android:background="@color/mainBackground">
+        <EditText
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EventName"
+            android:hint="Event Name"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:textColorHint="@color/darkButtonColor"
+            android:textColor="@color/darkButtonColor"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/lightButtonColor" />
+        <EditText
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EventDescription"
+            android:hint="Description"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:textColorHint="@color/darkButtonColor"
+            android:textColor="@color/darkButtonColor"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/lightButtonColor" />
+        <Button
+            android:text="Select Friends (Not Implemented)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/SelectFriends"
+            android:textColor="@color/darkButtonColor"
+            android:background="@color/lightButtonColor" />
+    </LinearLayout>
+</LinearLayout>

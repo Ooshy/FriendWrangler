@@ -2,17 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="488.6dp"
-        android:id="@+id/listView1"
-        android:layout_marginBottom="12.7dp" />
-    <Button
-        android:text="Button"
+    android:layout_height="fill_parent"
+    android:gravity="top|center"
+    android:background="@color/darkButtonColor">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/linearLayout1"
+        android:background="@color/mainBackground"
+        android:elevation="10dp"
+        android:layout_margin="20dp">
+        <Button
+            android:text="Create a New Event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/CreateEvent"
+            android:background="@color/lightButtonColor"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:padding="20dp"
+            android:elevation="8dp"
+            android:textColor="@color/darkButtonColor" />
+        <Button
+            android:text="About Friend Gatherer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/About"
+            android:background="@color/lightButtonColor"
+            android:padding="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:elevation="8dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/darkButtonColor" />
+        <Button
+            android:text="Browse History"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EventHistory"
+            android:background="@color/lightButtonColor"
+            android:padding="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:elevation="8dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/darkButtonColor" />
+        <Button
+            android:text="View Pending Events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/PendingEvents"
+            android:background="@color/lightButtonColor"
+            android:clickable="true"
+            android:enabled="true"
+            android:hapticFeedbackEnabled="true"
+            android:padding="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:elevation="8dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/darkButtonColor" />
+        <Button
+            android:text="Send Test Message (Debug)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/SendTestMessage"
+            android:background="@color/lightButtonColor"
+            android:clickable="true"
+            android:enabled="true"
+            android:hapticFeedbackEnabled="true"
+            android:padding="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:elevation="8dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/darkButtonColor" />
+    </LinearLayout>
 </LinearLayout>

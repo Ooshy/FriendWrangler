@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hash> s\3rQ}AV4!*UdCK!</hash>
+<theirhash>Bmce+9aHdOoVtE7fS3B07tfj7Bc=</theirhash>
+<command>
+	keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+</command>

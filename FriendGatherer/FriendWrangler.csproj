@@ -71,7 +71,7 @@
     <Compile Include="Classes\InvitationValidator.cs" />
     <Compile Include="Classes\SelectFriendsActivity.cs" />
     <Compile Include="Classes\Timer.cs" />
-    <Compile Include="Globals\Contants.cs" />
+    <Compile Include="Globals\Constants.cs" />
     <Compile Include="Enumerations\Enumerations.cs" />
     <Compile Include="Enumerations\InvitationStatus.cs" />
     <Compile Include="Enumerations\MessageSentiment.cs" />

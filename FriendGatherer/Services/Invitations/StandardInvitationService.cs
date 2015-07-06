@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FriendWrangler.Core.Enumerations;
 using FriendWrangler.Core.Models;
@@ -24,8 +25,9 @@ namespace FriendWrangler.Core.Services.Invitations
         }
 
         //I want to change this so it returns the final list of initations, but I don't know how.
-        public void SendInvitations(Models.Invitation invitation, IList<Models.Friend> friends, int waitTime ,int TargetTotalGuests,string message, int limit = 1 )
+        public void SendInvitations(Models.Invitation invitation, IList<Models.Friend> friends, double waitTime ,int TargetTotalGuests,string message, int limit = 1 )
         {
+            Console.WriteLine("Sending inviations");
             //List to keep invitations
             var invitationList = new List<Invitation>();
             //max number of people to contact at a time
@@ -33,8 +35,9 @@ namespace FriendWrangler.Core.Services.Invitations
             //Populate the Friend invitation list
             foreach (var friend in friends)
             {
+                Console.WriteLine("Populating Friends");
                 var friendInvitation = invitation.Clone(friend);
-                friendInvitation.SetTimeout(waitTime);
+                Task.Factory.StartNew(() => friendInvitation.SetTimeout(waitTime));
                 friendInvitation.invitationStatusChanged += InvitationOnInvitationStatusChanged;
                 invitationList.Add(friendInvitation);
 
@@ -51,7 +54,9 @@ namespace FriendWrangler.Core.Services.Invitations
                 {
                      //might want to keep track of priority, but this might work if list is not shuffeled.
                     //find the first person not yet send and send to them. 
+
                     invitationList.First(x => x.Status == InvitationStatus.NotYetSent).SendMessage(message);
+                    
                 } 
             }
 

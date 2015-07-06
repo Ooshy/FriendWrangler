@@ -45,6 +45,7 @@ namespace FriendWrangler.Core.Models
 
         public void StartReceivingMessage()
         {
+            Console.WriteLine("Started Receiving");
             if (MessageReceived != null) MessageReceived(ReceiveMessages());
         }
 

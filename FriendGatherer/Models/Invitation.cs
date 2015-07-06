@@ -1,15 +1,18 @@
-﻿using FriendWrangler.Core.Classes;
-using System;
+﻿using System;
+using FriendWrangler.Core.Classes;
+using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android.App;
+using Android.Widget;
 using FriendWrangler.Core.Enumerations;
 using Newtonsoft.Json;
 
 namespace FriendWrangler.Core.Models
 {
-    public class Invitation
+    public class Invitation 
     {
         #region Events
         public delegate void InvitationStatusChanged(Invitation source, EventArgs eventArgs);
@@ -24,18 +27,20 @@ namespace FriendWrangler.Core.Models
         {
             Status = InvitationStatus.NotYetSent;
             Friend = friend;
-            _timer = new Timer(0);
+
         }
         protected Invitation(Friend friend, int waitTime)
         {
             Status = InvitationStatus.NotYetSent;
             Friend = friend;
-            _timer = new Timer(waitTime);
+            Timer.Interval = waitTime;
         }
 
         #endregion
 
         #region Properties
+
+        public System.Timers.Timer Timer { get; set; }
 
         public Invitation Clone(Friend friend)
         {
@@ -44,7 +49,8 @@ namespace FriendWrangler.Core.Models
                 Friend = friend,
                 Id = Id,
                 EventName = EventName,
-                Status = InvitationStatus.NotYetSent
+                Status = InvitationStatus.NotYetSent,
+                Timer = new System.Timers.Timer()
                
             };
         }
@@ -57,7 +63,6 @@ namespace FriendWrangler.Core.Models
 
         #region Fields
 
-        readonly Timer _timer; 
         
         #endregion
 
@@ -65,24 +70,30 @@ namespace FriendWrangler.Core.Models
 
         public void SetWaitTime(int time)
         {
-            this._timer.WaitTime = time;
+            Timer.Interval = time;
+
         }
 
         public void SendMessage(string message)
         {
+            Console.WriteLine("Sent Invitation");
             this.Status = InvitationStatus.Pending;
+            Task.Factory.StartNew(() => StartTimer());
             Friend.SendInvitation(message);
             Friend.MessageReceived += MessageReceived;
+            
+
             Task.Factory.StartNew(() => Friend.StartReceivingMessage());
         }
 
         /// <summary>
         /// Starts the timer
         /// </summary>
-        public async void StartTimer()
+        public void StartTimer()
         {
             Status = InvitationStatus.Pending;
-            await _timer.Start();
+            Timer.Elapsed += OnTimerElapsed;
+            Timer.Start();
         }
 
         //Needs be be triggered by an external source
@@ -91,28 +102,36 @@ namespace FriendWrangler.Core.Models
         public void MessageReceived(string message)
         {
             
-            _timer.Stop();
+            Timer.Stop();
             
             var sentiment = InvitationAnalyzer.AnalyzeMessage(message);
             Console.WriteLine(sentiment);
+            var ValidResponse = false;
             switch (sentiment)
             {
                 case MessageSentiment.Yes:
                     Status = InvitationStatus.Yes;
+                    ValidResponse = true;
                         break;
                 case MessageSentiment.No:
                     Status = InvitationStatus.No;
+                    ValidResponse = true;
                         break;
                 case MessageSentiment.Unknown:
                     Status = InvitationStatus.Unknown;
+                    SendMessage("Is that a yes or no?");
                         break;
             }
-            if (invitationStatusChanged != null)
+            if (ValidResponse)
             {
-                invitationStatusChanged(this, EventArgs.Empty);
+
+                if (invitationStatusChanged != null)
+                {
+                    invitationStatusChanged(this, EventArgs.Empty);
+                }
+                //Unsubscribe to message received
+                Friend.MessageReceived -= MessageReceived; 
             }
-            //Unsubscribe to message received
-            Friend.MessageReceived -= MessageReceived;
         }
 
 
@@ -120,16 +139,18 @@ namespace FriendWrangler.Core.Models
         /// Sets the timeout for the timer
         /// </summary>
         /// <param name="time"></param>
-        public void SetTimeout(int time)
+        public void SetTimeout(double time)
         {
-            _timer.WaitTime = time;
+            Timer.Interval = time;
         }
 
         //Takes proper steps when timer elapses
-        protected virtual void OnTimerElapsed()
+        protected virtual void OnTimerElapsed(object o , EventArgs e)
         {
-            _timer.Stop();
+            Timer.Stop();
             Status = InvitationStatus.NoResponse;
+            Friend.MessageReceived -= MessageReceived;
+            Friend.SendInvitation("Sorry. Something came up.");
             if (invitationStatusChanged != null)
             {
                 invitationStatusChanged(this, EventArgs.Empty);

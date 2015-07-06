@@ -24,6 +24,7 @@ namespace FriendWrangler.Droid
               Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+
         int count = 1;
         private Button _createEvent;
         private Button _pendingEvents;
@@ -63,6 +64,7 @@ namespace FriendWrangler.Droid
             var manager = Manager.SharedInstance;
             var dbName = "temp";
             var database = manager.GetDatabase(dbName);
+            manager.GetDatabase("friendmanager");
             Console.WriteLine("Database created");
 
             // Set our view from the "main" layout resource
@@ -79,8 +81,10 @@ namespace FriendWrangler.Droid
                 var test = new StandardInvitationService();
                 var testinvite = new Invitation() { EventName = "Farm Party" };
                 var friendlist = new List<Friend>();
+                friendlist.Add(new AndroidFriend(){PhoneNumber = "5407356190"});
                 friendlist.Add(new AndroidFriend() { PhoneNumber = "5712949590" });
-                Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 9999999, 1, "Hello Johnny", 1));
+                Android.Widget.Toast.MakeText(this, "Sent text", ToastLength.Short).Show();
+                Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 10000, 1, "Text back something vauge.", 1));
             };
         }
     }

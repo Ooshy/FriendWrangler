@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using Android.Telephony;
 using Couchbase.Lite;
 using FriendWrangler.Core.Models;
@@ -45,11 +46,13 @@ namespace FriendWrangler.Droid.Classes
 
         public override string ReceiveMessages()
         {
+            
             TextMessage = null;
             var receiver = new SmsBroadcastReceiver();
             var manager = Manager.SharedInstance;
             var database = manager.GetDatabase("temp");
             
+
 
 
             while (TextMessage == null)
@@ -71,12 +74,9 @@ namespace FriendWrangler.Droid.Classes
             Console.WriteLine(TextMessage);
             return TextMessage;
         }
-        public void SetProp(string message , string number)
+        public void SetProp(object o , EventArgs e)
         {
-            if (number == PhoneNumber)
-            {
-                TextMessage = message;
-            }   
+            
         }
     }
 }

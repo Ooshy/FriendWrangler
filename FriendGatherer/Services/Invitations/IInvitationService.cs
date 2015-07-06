@@ -9,7 +9,7 @@ namespace FriendWrangler.Core.Services.Invitations
 {
     public interface IInvitationService
     {
-        void SendInvitations(Models.Invitation invitation, IList<Models.Friend> friends, int waitTime,
+        void SendInvitations(Models.Invitation invitation, IList<Models.Friend> friends, double waitTime,
             int TargetTotalGuests, string message, int limit = 1);
 
     }

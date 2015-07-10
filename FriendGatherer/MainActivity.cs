@@ -81,10 +81,10 @@ namespace FriendWrangler.Droid
                 var test = new StandardInvitationService();
                 var testinvite = new Invitation() { EventName = "Farm Party" };
                 var friendlist = new List<Friend>();
-                friendlist.Add(new AndroidFriend(){PhoneNumber = "5407356190"});
-                friendlist.Add(new AndroidFriend() { PhoneNumber = "5712949590" });
+                friendlist.Add(new AndroidFriend() { PhoneNumber = "5713349979" });
+                friendlist.Add(new AndroidFriend(){PhoneNumber = "5712949590"});
                 Android.Widget.Toast.MakeText(this, "Sent text", ToastLength.Short).Show();
-                Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 10000, 1, "Text back something vauge.", 1));
+                Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 30000, 1, "Text back something vauge.", 1));
             };
         }
     }

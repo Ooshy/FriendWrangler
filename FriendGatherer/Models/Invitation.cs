@@ -4,6 +4,7 @@ using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Widget;
@@ -42,6 +43,8 @@ namespace FriendWrangler.Core.Models
 
         public System.Timers.Timer Timer { get; set; }
 
+        public Task Task { get; set; }
+
         public Invitation Clone(Friend friend)
         {
             return new Invitation
@@ -59,6 +62,7 @@ namespace FriendWrangler.Core.Models
         public string EventName { get; set; }
         public InvitationStatus Status { get; set; }
         public Friend Friend { get; set; }
+
         #endregion
 
         #region Fields
@@ -81,9 +85,17 @@ namespace FriendWrangler.Core.Models
             Task.Factory.StartNew(() => StartTimer());
             Friend.SendInvitation(message);
             Friend.MessageReceived += MessageReceived;
-            
-
-            Task.Factory.StartNew(() => Friend.StartReceivingMessage());
+            ManualResetEvent wait = new ManualResetEvent(false);
+            Thread work = new Thread(new ThreadStart(() =>
+            {
+                Friend.StartReceivingMessage();
+            }));
+            work.Start();
+            Boolean signal = wait.WaitOne((int) Timer.Interval);
+            if (!signal)
+            {
+                work.Abort();
+            }
         }
 
         /// <summary>
@@ -148,6 +160,7 @@ namespace FriendWrangler.Core.Models
         protected virtual void OnTimerElapsed(object o , EventArgs e)
         {
             Timer.Stop();
+            
             Status = InvitationStatus.NoResponse;
             Friend.MessageReceived -= MessageReceived;
             Friend.SendInvitation("Sorry. Something came up.");
@@ -155,6 +168,7 @@ namespace FriendWrangler.Core.Models
             {
                 invitationStatusChanged(this, EventArgs.Empty);
             }
+           
         }
         #endregion
 

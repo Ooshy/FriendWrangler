@@ -58,6 +58,7 @@ namespace FriendWrangler.Droid.Classes
             while (TextMessage == null)
             {
 
+                Console.WriteLine("Checking");
               var x = database.GetExistingDocument(PhoneNumber);
                 
                 if (x != null)

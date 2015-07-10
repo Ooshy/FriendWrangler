@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Android.Telephony;
@@ -48,31 +49,35 @@ namespace FriendWrangler.Droid.Classes
         {
             
             TextMessage = null;
-            var receiver = new SmsBroadcastReceiver();
             var manager = Manager.SharedInstance;
             var database = manager.GetDatabase("temp");
+            
             
 
 
 
             while (TextMessage == null)
             {
+                Thread.Sleep(1000);
 
-                Console.WriteLine("Checking");
+                Console.WriteLine("Checking " + PhoneNumber.ToString());
               var x = database.GetExistingDocument(PhoneNumber);
-                
-                if (x != null)
-                {
-              TextMessage =  x.Properties.Values.First().ToString();
-                    x.Purge();
-                    
-                }
+
+             
+                    if (x != null)
+                    {
+                        TextMessage = x.Properties.Values.First().ToString();
+                        x.Purge();
+
+                    }
+
+
                 
 
 
 
             }
-            Console.WriteLine(TextMessage);
+            Console.WriteLine("Returning " + TextMessage);
             return TextMessage;
         }
         public void SetProp(object o , EventArgs e)

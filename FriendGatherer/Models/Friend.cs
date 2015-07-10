@@ -22,14 +22,14 @@ namespace FriendWrangler.Core.Models
         public List<Invitation> Log { get; set; }
 
 
-        public IList<Invitation> ActiveInvitations
-        {
-            get { return Log.Where(i => i.Status == InvitationStatus.NoResponse).ToList(); }
-        }
-        public IList<Invitation> OldInvitations
-        {
-            get { return Log.Where(i => i.Status != InvitationStatus.NoResponse ).ToList(); }
-        } 
+        //public IList<Invitation> ActiveInvitations
+        //{
+        //    get { return Log.Where(i => i.Status == InvitationStatus.NoResponse).ToList(); }
+        //}
+        //public IList<Invitation> OldInvitations
+        //{
+        //    get { return Log.Where(i => i.Status != InvitationStatus.NoResponse ).ToList(); }
+        //} 
         #endregion
 
         #region Methods

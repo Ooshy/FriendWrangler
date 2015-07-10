@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Widget;
 using FriendWrangler.Core.Enumerations;
+using ICSharpCode.SharpZipLib.Tar;
 using Newtonsoft.Json;
 
 namespace FriendWrangler.Core.Models
@@ -85,17 +86,19 @@ namespace FriendWrangler.Core.Models
             Task.Factory.StartNew(() => StartTimer());
             Friend.SendInvitation(message);
             Friend.MessageReceived += MessageReceived;
+            //Task.Factory.StartNew((() => Friend.StartReceivingMessage()));
             ManualResetEvent wait = new ManualResetEvent(false);
             Thread work = new Thread(new ThreadStart(() =>
             {
                 Friend.StartReceivingMessage();
             }));
             work.Start();
-            Boolean signal = wait.WaitOne((int) Timer.Interval);
+            Boolean signal = wait.WaitOne((int)Timer.Interval);
             if (!signal)
             {
                 work.Abort();
             }
+            Thread.SpinWait(10);
         }
 
         /// <summary>
@@ -117,7 +120,7 @@ namespace FriendWrangler.Core.Models
             Timer.Stop();
             
             var sentiment = InvitationAnalyzer.AnalyzeMessage(message);
-            Console.WriteLine(sentiment);
+            Console.WriteLine("Answer is " + sentiment);
             var ValidResponse = false;
             switch (sentiment)
             {
@@ -128,6 +131,7 @@ namespace FriendWrangler.Core.Models
                 case MessageSentiment.No:
                     Status = InvitationStatus.No;
                     ValidResponse = true;
+                    //SendMessage("Too bad :(");
                         break;
                 case MessageSentiment.Unknown:
                     Status = InvitationStatus.Unknown;

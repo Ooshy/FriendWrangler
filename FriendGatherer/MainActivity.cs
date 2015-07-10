@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Android;
 using Android.App;
@@ -64,6 +65,8 @@ namespace FriendWrangler.Droid
             var manager = Manager.SharedInstance;
             var dbName = "temp";
             var database = manager.GetDatabase(dbName);
+            
+            
             manager.GetDatabase("friendmanager");
             Console.WriteLine("Database created");
 
@@ -81,8 +84,10 @@ namespace FriendWrangler.Droid
                 var test = new StandardInvitationService();
                 var testinvite = new Invitation() { EventName = "Farm Party" };
                 var friendlist = new List<Friend>();
-                friendlist.Add(new AndroidFriend() { PhoneNumber = "5713349979" });
+                //friendlist.Add(new AndroidFriend() { PhoneNumber = "5713349977" });
+                friendlist.Add(new AndroidFriend() { PhoneNumber = "5712949591" });
                 friendlist.Add(new AndroidFriend(){PhoneNumber = "5712949590"});
+                //friendlist.Add(new AndroidFriend(){PhoneNumber = "5712949590"});
                 Android.Widget.Toast.MakeText(this, "Sent text", ToastLength.Short).Show();
                 Task.Factory.StartNew(() => test.SendInvitations(testinvite, friendlist, 30000, 1, "Text back something vauge.", 1));
             };

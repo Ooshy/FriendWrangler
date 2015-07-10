@@ -53,6 +53,7 @@ namespace FriendWrangler.Droid
             }
             var manager = Manager.SharedInstance;
             var database = manager.GetDatabase("temp");
+            Console.WriteLine("Got message");
             var properties = new Dictionary<string, object>()
                 {
                  {"message", messageBody},
@@ -60,7 +61,10 @@ namespace FriendWrangler.Droid
 
 
             
+            
             var document = database.GetExistingDocument(messageFrom);
+            
+            
             if (document == null)
             {
              document = database.GetDocument(messageFrom);
@@ -72,7 +76,7 @@ namespace FriendWrangler.Droid
 
 
 
-            Console.WriteLine("Retrieved document: ");
+            Console.WriteLine("Retrieved document: " + messageBody);
             //foreach (var kvp in retrievedDocument.Properties)
             //{
             //    Console.WriteLine("{0} : {1}", kvp.Key, kvp.Value);

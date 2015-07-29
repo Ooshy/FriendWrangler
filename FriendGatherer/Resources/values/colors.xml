@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <item name="mainBackground" type="color">#607D8B</item>
-  <item name="hintColor" type="color">#CFD8DC</item>
-  <item name="textColor" type="color">#ECEFF1</item>
-  <item name="darkButtonColor" type="color">#263238</item>
-  <item name="lightButtonColor" type="color">#90A4AE</item>
+  <item name="primaryColor" type="color">#3F51B5</item>
+  <item name="textColor" type="color">#FFFFFF</item>
+  <item name="darkPrimaryColor" type="color">#303F9F</item>
+  <item name="lightPrimaryColor" type="color">#C5CAE9</item>
+  <item name="continueColor" type="color">#4CAF50</item>
+  <item name="primaryText" type="color">#212121</item>
 </resources>

@@ -3,7 +3,7 @@
   <!-- Inherit from the light Material Theme -->
   <style name="FriendWranglerTheme" parent="android:Theme.Material.Light">
     <!-- Customizations go here -->
-    <item name="android:windowBackground">@color/mainBackground</item>
+    <item name="android:windowBackground">@color/primaryColor</item>
     <item name="android:colorPrimary">#607D8B</item>
     <!-- Override the color of UI controls -->
     <item name="android:colorAccent">#ECEFF1</item>

@@ -3,14 +3,14 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/darkButtonColor">
+    android:background="@color/darkPrimaryColor">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1"
         android:layout_margin="20dp"
-        android:background="@color/mainBackground">
+        android:background="@color/primaryColor">
         <EditText
             android:inputType="textMultiLine"
             android:layout_width="match_parent"
@@ -19,13 +19,13 @@
             android:hint="Event Name"
             android:textSize="20sp"
             android:padding="10dp"
-            android:textColorHint="@color/darkButtonColor"
-            android:textColor="@color/darkButtonColor"
+            android:textColorHint="@color/primaryText"
+            android:textColor="@color/primaryText"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/lightButtonColor" />
+            android:background="@color/lightPrimaryColor" />
         <EditText
             android:inputType="textMultiLine"
             android:layout_width="match_parent"
@@ -34,18 +34,21 @@
             android:hint="Description"
             android:textSize="20sp"
             android:padding="10dp"
-            android:textColorHint="@color/darkButtonColor"
-            android:textColor="@color/darkButtonColor"
+            android:textColorHint="@color/primaryText"
+            android:textColor="@color/primaryText"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/lightButtonColor" />
+            android:background="@color/lightPrimaryColor" />
         <Button
-            android:text="Select Friends (Not Implemented)"
+            android:text="Select Friends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/SelectFriends"
-            android:textColor="@color/darkButtonColor"
-            android:background="@color/lightButtonColor" />
+            android:textColor="@color/textColor"
+            android:background="@color/continueColor"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 </LinearLayout>

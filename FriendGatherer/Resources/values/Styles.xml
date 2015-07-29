@@ -4,6 +4,6 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textColor">#FFFFFF</item>
-    <item name="android:background">#455A64</item>   
+    <item name="android:background">#3F51B5</item>   
   </style>
 </resources>

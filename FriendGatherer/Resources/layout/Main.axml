@@ -4,13 +4,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="top|center"
-    android:background="@color/darkButtonColor">
+    android:background="@color/darkPrimaryColor">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1"
-        android:background="@color/mainBackground"
+        android:background="@color/primaryColor"
         android:elevation="10dp"
         android:layout_margin="20dp">
         <Button
@@ -18,44 +18,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/CreateEvent"
-            android:background="@color/lightButtonColor"
+            android:background="@color/continueColor"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:padding="20dp"
             android:elevation="8dp"
-            android:textColor="@color/darkButtonColor" />
+            android:textColor="@color/primaryText" />
         <Button
             android:text="About Friend Gatherer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/About"
-            android:background="@color/lightButtonColor"
+            android:background="@color/lightPrimaryColor"
             android:padding="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:elevation="8dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/darkButtonColor" />
+            android:textColor="@color/primaryText" />
         <Button
             android:text="Browse History"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/EventHistory"
-            android:background="@color/lightButtonColor"
+            android:background="@color/lightPrimaryColor"
             android:padding="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:elevation="8dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/darkButtonColor" />
+            android:textColor="@color/primaryText" />
         <Button
             android:text="View Pending Events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/PendingEvents"
-            android:background="@color/lightButtonColor"
+            android:background="@color/lightPrimaryColor"
             android:clickable="true"
             android:enabled="true"
             android:hapticFeedbackEnabled="true"
@@ -64,13 +64,13 @@
             android:layout_marginLeft="20dp"
             android:elevation="8dp"
             android:layout_marginRight="20dp"
-            android:textColor="@color/darkButtonColor" />
+            android:textColor="@color/primaryText" />
         <Button
             android:text="Send Test Message (Debug)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/SendTestMessage"
-            android:background="@color/lightButtonColor"
+            android:background="@color/lightPrimaryColor"
             android:clickable="true"
             android:enabled="true"
             android:hapticFeedbackEnabled="true"
@@ -79,6 +79,6 @@
             android:layout_marginLeft="20dp"
             android:elevation="8dp"
             android:layout_marginRight="20dp"
-            android:textColor="@color/darkButtonColor" />
+            android:textColor="@color/primaryText" />
     </LinearLayout>
 </LinearLayout>
